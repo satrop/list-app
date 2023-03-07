@@ -7,7 +7,7 @@ import styles from './NewPost.module.scss';
 function NewPost() {
 	return (
 		<Modal>
-			<Form method='post' className={styles.form}>
+			<Form method="post" className={styles.form}>
 				<p>
 					<label htmlFor="body">Text</label>
 					<textarea id="body" required rows={3} name="body" />
@@ -31,8 +31,8 @@ export default NewPost;
 
 export async function action({ request }) {
 	const formData = await request.formData();
-	const postData = Object.fromEntries(formData)
-	await fetch('http://localhost:8080/posts', {
+	const postData = Object.fromEntries(formData);
+	await fetch('https://satrop.github.io/dummy-backend/posts', {
 		method: 'POST',
 		body: JSON.stringify(postData),
 		headers: {
@@ -40,5 +40,5 @@ export async function action({ request }) {
 		},
 	});
 
-	return redirect('/list-app/')
+	return redirect('/list-app/');
 }
